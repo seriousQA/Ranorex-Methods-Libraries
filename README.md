@@ -19,3 +19,4 @@ More Info from [MSDN](https://learn.microsoft.com/en-us/windows/win32/api/winuse
 
 __TheFirstRun__ TestModule is using to run 32-bit or 64-bit test application and resize window.
 
+__StartPopupWatcher__ TestModule is using to start a PopupWatcher to handle dialogs that can possibly come up during test run.
