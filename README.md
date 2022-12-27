@@ -20,3 +20,11 @@ More Info from [MSDN](https://learn.microsoft.com/en-us/windows/win32/api/winuse
 __TheFirstRun__ TestModule is using to run 32-bit or 64-bit test application and resize window.
 
 __StartPopupWatcher__ TestModule is using to start a PopupWatcher to handle dialogs that can possibly come up during test run.
+
+## __TEARDOWNlib__ is a TEARDOWN code collection and includes:
+- CloseApp() to find and kill process of test product;
+- CleanupFolderResult() to delete a ResultFolder for each test product;
+- CloseProjectWindow() to close the test product (as GUI method example);
+- CloseInstancesApp() to close all instances of application;
+- KillProcessTree() to kill a process tree and all children using taskkill;
+- KillProcessAndChildren() to kill a process and all children using ManagementObjectSearcher.
