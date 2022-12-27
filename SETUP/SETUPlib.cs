@@ -53,11 +53,11 @@ namespace SETUP
     	}
     	}    	   		
     	
-    	/// <summary>
-    	/// Delete from the registry the key for application.
+		/// <summary>
+		/// Delete from the registry the key for application.
 		/// key name = variable
 		/// <param name="regeditFolder">the name of registry folder of your application.</param>
-    	/// </summary>
+		/// </summary>
     	[UserCodeMethod]
     	public static void REGdelete(string regeditFolder)
     	{
@@ -72,11 +72,11 @@ namespace SETUP
     			keyName.Close();
 			}
     	}
-    	    	
-    	/// <summary>
-    	/// Remove such traces of a test program like \Documents, \Roaming and s.o.
+    	
+		/// <summary>
+		/// Remove such traces of a test program like \Documents, \Roaming and s.o.
 		/// <param name="regeditFolder">the name of registry folder of your application.</param>
-    	/// </summary>
+		/// </summary>
     	[UserCodeMethod]
     	public static void RMDIR(string regeditFolder)
     	{    		
@@ -107,9 +107,9 @@ namespace SETUP
 				}
     	}    
     	
-    	/// <summary>
-    	/// StartDialog > CreateNewProject (gui)
-    	/// </summary>
+		/// <summary>
+		/// StartDialog > CreateNewProject (gui)
+		/// </summary>
     	[UserCodeMethod]
     	public static void StartDialogCreateNewProject()
     	{
@@ -117,14 +117,14 @@ namespace SETUP
     		repo.StartDialog.CreateNewProjectBtn.Click();
             Delay.Seconds(15);
     	}
-    	    	
-    	/// <summary>
-    	///  Open a specific project.
+    	
+		/// <summary>
+		///  Open a specific project.
 		/// <param name="patchProject">path to the project.</param>
 		// for example, value="C:/Ranorex/.../Projects/">
 		/// <param name="nameProject">the project name.</param>
 		// for example, value="myProject.docx">
-    	/// </summary>
+		/// </summary>
     	[UserCodeMethod]
     	public static void OpenProjectStartDialog(string patchProject, string nameProject)
     	{
@@ -148,9 +148,9 @@ namespace SETUP
 			Delay.Seconds(3);
     	}
     	
-    	/// <summary>
-    	/// Resize a window to actually monitor resolution.
-    	/// </summary>
+		/// <summary>
+		/// Resize a window to actually monitor resolution.
+		/// </summary>
     	[UserCodeMethod]
     	public static void ResizeWindow()
     	{
@@ -160,10 +160,10 @@ namespace SETUP
     		repo.ProjectWindow.Self.Resize(resolution.Width, resolution.Height);
     	}
     	
-    	/// <summary> 
-    	/// Remove from \FolderResult all files created during the test run. 
+		/// <summary> 
+		/// Remove from \FolderResult all files created during the test run.
 		/// <param name="product">the test product name.</param>
-    	/// </summary>
+		/// </summary>
     	[UserCodeMethod]
     	public static void DeleteFilesFromDIR(string product)
     	{
@@ -179,7 +179,7 @@ namespace SETUP
     	}
 		
 		/// <summary>
-    	// Send a dump with a comment.
+		// Send a dump with a comment.
 		/// </summary>
     	[UserCodeMethod]
     	public static void CheckDamp()
@@ -213,10 +213,10 @@ namespace SETUP
     		}
     	}
     	
-    	/// <summary>
-    	/// Create a ResultFolder for each test product.
+		/// <summary>
+		/// Create a ResultFolder for each test product.
 		/// <param name="product">the test product name.</param>
-    	/// </summary>
+		/// </summary>
     	[UserCodeMethod]
     	public static void CreateFolderResult(string product)
     	{
