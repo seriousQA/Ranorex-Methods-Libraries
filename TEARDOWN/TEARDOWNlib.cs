@@ -31,7 +31,6 @@ namespace TEARDOWN
     [UserCodeCollection]
     public class TEARDOWNlib
     {
-    	
     	/// <summary>
     	/// Find and kill process of test product.
 		/// <param name="processName">the name of process without ".exe".</param>
@@ -148,7 +147,7 @@ namespace TEARDOWN
     	}
     	
     	/// <summary>
-    	/// Kill a process and all children.
+    	/// Kill a process and all children using ManagementObjectSearcher.
     	/// </summary>
 		/// <param name="processName">the name of process without ".exe".</param>
 		/// for example, value="myApp">
@@ -167,7 +166,8 @@ namespace TEARDOWN
 				{
 					return;
 				}
-    		
+				
+				// Initializes a new instance of the ManagementObjectSearcher class.
 				ManagementObjectSearcher searcher = new ManagementObjectSearcher
 				("Select * From Win32_Process Where ParentProcessID=" + pid);
 				ManagementObjectCollection moc = searcher.Get();
