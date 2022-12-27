@@ -31,55 +31,55 @@ namespace SETUP
             // Do not delete - a parameterless constructor is required!
         }
 
-// full path to *.exe file (32-bit application)
-// for example, value="c:\\Program Files (x86)\\...\\Bin\\myApp.exe">
-string _FullExePathX86 = "";
-[TestVariable("8899ccf1-797a-4bfb-ad4f-82495c5923ed")]
-public string FullExePathX86
-{
-	get { return _FullExePathX86; }
-	set { _FullExePathX86 = value; }
-}
+		// full path to *.exe file (32-bit application)
+		// for example, value="c:\\Program Files (x86)\\...\\Bin\\myApp.exe">
+		string _FullExePathX86 = "";
+		[TestVariable("8899ccf1-797a-4bfb-ad4f-82495c5923ed")]
+		public string FullExePathX86
+		{
+			get { return _FullExePathX86; }
+			set { _FullExePathX86 = value; }
+		}
 
-// short path to Bin folder (32-bit application)
-// for example, value="c:\\Program Files (x86)\\...\\Bin">
-string _ShortBinPathX86 = "";
-[TestVariable("8908a0af-e0cf-48a8-9634-0cecac32a025")]
-public string ShortBinPathX86
-{
-	get { return _ShortBinPathX86; }
-	set { _ShortBinPathX86 = value; }
-}
+		// short path to Bin folder (32-bit application)
+		// for example, value="c:\\Program Files (x86)\\...\\Bin">
+		string _ShortBinPathX86 = "";
+		[TestVariable("8908a0af-e0cf-48a8-9634-0cecac32a025")]
+		public string ShortBinPathX86
+		{
+			get { return _ShortBinPathX86; }
+			set { _ShortBinPathX86 = value; }
+		}
 
-// full path to *.exe file (64-bit application)
-// for example, value="c:\\Program Files\\...\\Bin\\myApp.exe">
-string _FullExePathX64 = "";
-[TestVariable("96a7340c-31ee-4a84-90c9-27ec75fec6e2")]
-public string FullExePathX64
-{
-	get { return _FullExePathX64; }
-	set { _FullExePathX64 = value; }
-}
+		// full path to *.exe file (64-bit application)
+		// for example, value="c:\\Program Files\\...\\Bin\\myApp.exe">
+		string _FullExePathX64 = "";
+		[TestVariable("96a7340c-31ee-4a84-90c9-27ec75fec6e2")]
+		public string FullExePathX64
+		{
+			get { return _FullExePathX64; }
+			set { _FullExePathX64 = value; }
+		}
 
-// short path to Bin folder (64-bit application)
-// for example, value="c:\\Program Files\\...\\Bin">
-string _ShortBinPathX64 = "";
-[TestVariable("aa58fc42-a145-462c-8f43-d831d3470501")]
-public string ShortBinPathX64
-{
-	get { return _ShortBinPathX64; }
-	set { _ShortBinPathX64 = value; }
-}
+		// short path to Bin folder (64-bit application)
+		// for example, value="c:\\Program Files\\...\\Bin">
+		string _ShortBinPathX64 = "";
+		[TestVariable("aa58fc42-a145-462c-8f43-d831d3470501")]
+		public string ShortBinPathX64
+		{
+			get { return _ShortBinPathX64; }
+			set { _ShortBinPathX64 = value; }
+		}
 
-// if the product and process names do not match, then it is the product name
-// for example, value="myApp"
-string _product = "";
-[TestVariable("dab256ea-95b3-4a1d-8b04-ce4720bfbe1e")]
-public string product
-{
-	get { return _product; }
-	set { _product = value; }
-}
+		// if the product and process names do not match, then it is the product name
+		// for example, value="myApp"
+		string _product = "";
+		[TestVariable("dab256ea-95b3-4a1d-8b04-ce4720bfbe1e")]
+		public string product
+		{
+			get { return _product; }
+			set { _product = value; }
+		}
 
         void ITestModule.Run()
         {
