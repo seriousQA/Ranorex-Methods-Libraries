@@ -2,6 +2,10 @@
 
 The libraries contain the most important and useful C# methods for creating autotests in Ranorex IDE.
 
+## __Requirements:__
+* Windows
+* Ranorex Studio
+
 ## __SETUPlib__ is a SETUP code collection and includes:
 - FirstOpenApp() to run 32-bit or 64-bit application;
 - REGdelete() to delete from the registry the key for application;
