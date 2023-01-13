@@ -21,12 +21,13 @@ using Ranorex.Core.Testing;
 
 namespace SETUP
 {
-	// Change Windows OS keyboard layout using C#. 
-	// U.S. English layout = "00010409"
-	// German layout = "00010407"
-	// Russian layout = "00010419"
-	// more Info from MSDN (LoadKeyboardLayoutA function (winuser.h))
-	
+	/// <summary>
+	/// Change Windows OS keyboard layout using C#. 
+	/// U.S. English layout = "00010409"
+	/// German layout = "00010407"
+	/// Russian layout = "00010419"
+	/// more Info from MSDN (LoadKeyboardLayoutA function (winuser.h))
+	/// </summary>
     [TestModule("7979E921-E8D7-4514-8AD3-2F500B14490D", ModuleType.UserCode, 1)]
     public class SetKeyboardLayout : ITestModule
     {

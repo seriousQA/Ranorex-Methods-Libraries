@@ -21,7 +21,9 @@ using Ranorex.Core.Testing;
 
 namespace SETUP
 {
-    
+    /// <summary>
+	/// First Run of App
+	/// </summary>
     [TestModule("4691C569-AFE8-4C6E-AA43-5E4ADCCEC90C", ModuleType.UserCode, 1)]
     public class TheFirstRun : ITestModule
     {

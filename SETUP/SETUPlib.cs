@@ -15,7 +15,7 @@ using System.Threading;
 using WinForms = System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
-using Microsoft.Win86;
+using Microsoft.Win32;
 using System.Security.Principal;
 using Microsoft.VisualBasic.FileIO;
 
@@ -136,18 +136,18 @@ namespace SETUP
             Delay.Milliseconds(10);
             
             // form ['Open Project']
-           	repo.OpenProjectWindow.PreviousLocations.Click();
-            repo.OpenProjectWindow.Text41477.TextValue = patchProject;
+           	repo.OpenProject.PreviousLocations.Click();
+            repo.OpenProject.Text41477.TextValue = patchProject;
             Delay.Milliseconds(10);  
             Keyboard.Press("{Return}");
-            repo.OpenProjectWindow.Text1148.Click();
-            repo.OpenProjectWindow.Text1148.TextValue = nameProject;
+            repo.OpenProject.Text1148.Click();
+            repo.OpenProject.Text1148.TextValue = nameProject;
 	    	Delay.Milliseconds(10);
 	    	// All files (*.*)
-	    	repo.OpenProjectWindow.ComboBox1348.Click();
-	    	repo.List1000.AllFiles.MoveTo();
-	    	repo.List1000.AllFiles.Click();
-	    	repo.OpenProjectWindow.OpenDtn.Click();
+	    	repo.OpenProject.ComboBox1348.Click();
+	    	repo.List.AllFiles.MoveTo();
+	    	repo.List.AllFiles.Click();
+	    	repo.OpenProject.OpenBtn.Click();
 	    	Delay.Seconds(3);
     	}
     	
