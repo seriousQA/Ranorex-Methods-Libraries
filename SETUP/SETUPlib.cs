@@ -125,7 +125,7 @@ namespace SETUP
 		/// <param name="patchProject">path to the project.</param>
 		/// for example, value="C:/Ranorex/.../Projects/">
 		/// <param name="nameProject">the project name.</param>
-		/// for example, value="myProject.docx">
+		/// for example, value="myProject.docx"
 		/// </summary>
     	[UserCodeMethod]
     	public static void OpenProjectStartDialog(string patchProject, string nameProject)
