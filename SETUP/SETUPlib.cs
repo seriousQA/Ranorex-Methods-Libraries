@@ -123,7 +123,7 @@ namespace SETUP
 		/// <summary>
 		///  Open a specific project.
 		/// <param name="patchProject">path to the project.</param>
-		/// for example, value="C:/Ranorex/.../Projects/">
+		/// for example, value="C:/Ranorex/.../Projects/"
 		/// <param name="nameProject">the project name.</param>
 		/// for example, value="myProject.docx"
 		/// </summary>
