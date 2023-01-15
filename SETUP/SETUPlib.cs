@@ -87,11 +87,11 @@ namespace SETUP
         		Documents.Delete(true);
     		}
 			
-		string pathRoaming = @"c:\%HOMEPATH%\AppData\Roaming\" + regeditFolder;
-		pathRoaming = Environment.ExpandEnvironmentVariables(pathRoaming);
+			string pathRoaming = @"c:\%HOMEPATH%\AppData\Roaming\" + regeditFolder;
+			pathRoaming = Environment.ExpandEnvironmentVariables(pathRoaming);
 			
-		if (Directory.Exists(pathRoaming))
-    		{
+			if (Directory.Exists(pathRoaming))
+			{
 				// search for *.ini	in folder and delete	
 				string[] fileList1 = Directory.GetFiles(pathRoaming, "*.ini");
 				foreach (string f1 in fileList1)
@@ -204,9 +204,7 @@ namespace SETUP
      				Report.Info("Dump-client has existed");
      				repo.DmpClient.Comment.Click();
      				repo.DmpClient.Comment.TextValue = "has found by autotest";
-     				Delay.Milliseconds(10);
-					repo.DmpClient.Send.Click(); 
-					Delay.Milliseconds(10);
+					repo.DmpClient.Send.Click();
      			}
      			else
      			{
