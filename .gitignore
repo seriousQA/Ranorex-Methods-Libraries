@@ -1,3 +1,6 @@
+# Ranorex (Autotests)
+*.rxlog
+
 # Prerequisites
 *.d
 
