@@ -1,6 +1,6 @@
 ﻿/*
  * Created by Ranorex
- * User: Vasilenok_E
+ * User: seriousQA
  * Date: 17.08.2018
  * Time: 18:07
  * 
@@ -21,13 +21,11 @@ using Ranorex.Core.Testing;
 
 namespace SETUP
 {
-	/// <summary>
-	/// Change Windows OS keyboard layout using C#. 
+	/// <summary> Change Windows OS keyboard layout using C#. </summary>
 	/// U.S. English layout = "00010409"
 	/// German layout = "00010407"
 	/// Russian layout = "00010419"
 	/// more Info from MSDN (LoadKeyboardLayoutA function (winuser.h))
-	/// </summary>
     [TestModule("7979E921-E8D7-4514-8AD3-2F500B14490D", ModuleType.UserCode, 1)]
     public class SetKeyboardLayout : ITestModule
     {

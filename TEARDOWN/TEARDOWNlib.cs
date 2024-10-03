@@ -1,6 +1,6 @@
 ﻿/*
  * Created by Ranorex
- * User: Vasilenok_e
+ * User: seriousQA
  * Date: 19.12.2018
  * Time: 12:17
  * 
@@ -25,31 +25,26 @@ using Ranorex.Core.Testing;
 
 namespace TEARDOWN
 {
-    /// <summary>
-    /// TEARDOWN code collection.
-    /// </summary>
+    /// <summary> TEARDOWN code collection. </summary>
     [UserCodeCollection]
     public class TEARDOWNlib
     {
-    	/// <summary>
-    	/// Find and kill process of test product.
-		/// <param name="processName">the name of process without ".exe".</param>
-		/// for example, value="myApp">
-    	/// </summary>
+    	/// <summary> Find and kill process of AUT. </summary>
+		/// <param name="processName"> the name of process without ".exe". E.g. "myApp". </param>		
     	[UserCodeMethod]
-    	public static void CloseApp(string processName)
+    	public static void closeApp(string processName)
     	{
 			// process list
             Process[] procList = Process.GetProcessesByName(processName);
 			
 			// watching each process 
-            foreach (System.Diagnostics.Process anti in procList) 
+            foreach (System.Diagnostics.Process proc in procList) 
 			{
 				// if the required process has started
-				if(anti.ProcessName.Contains(processName))
+				if(proc.ProcessName.Contains(processName))
 				{
-					Report.Info(processName + " exists. Close.");
-					anti.Kill();
+					Report.Info(processName + " exists. Closing..");
+					proc.Kill();
 					Delay.Seconds(1);					
 				}
 			
@@ -61,23 +56,19 @@ namespace TEARDOWN
         	}
     	}
     	    	
-    	/// <summary>
-    	/// Delete a ResultFolder for each test product.
-		/// <param name="product">the test product name.</param>
-    	/// </summary>
+    	/// <summary> Delete a results folder for each AUT. </summary>
+		/// <param name="productName"> the AUT name. </param>
     	[UserCodeMethod]
-    	public static void CleanupFolderResult(string product)
+    	public static void cleanUpResultsFolder(string productName)
     	{
-    		DirectoryInfo FolderName = new DirectoryInfo("c:\\Ranorex\\" + product + "\\FolderResult\\");    		
+    		DirectoryInfo FolderName = new DirectoryInfo("c:\\Ranorex\\" + productName + "\\FolderResult\\");    		
     		FolderName.Delete(true);
     	}    	
     	
-		/// <summary>
-    	/// Close the test product (GUI example).
-		/// <param name="product">the test product name.</param>
-    	/// </summary>
+		/// <summary> Close the AUT (GUI example). </summary>
+		/// <param name="productName"> the AUT product name. </param>
     	[UserCodeMethod]
-    	public static void CloseProjectWindow(string product)
+    	public static void CloseProjectWindow(string productName)
     	{
     		for (int i=0; i<5; i++)
             	{
@@ -91,18 +82,15 @@ namespace TEARDOWN
     					}
     				else
     					{
-    						Report.Info(product + " doesn't exist. No entity to close.");   
+    						Report.Info(productName + " doesn't exist. No entity to close.");   
     					}
     			}
     	}
     	    	
-    	/// <summary>
-    	/// Close all instances of application.
-		/// <param name="processName">the name of process without ".exe".</param>
-		/// for example, value="myApp">
-    	/// </summary>
+    	/// <summary> Close all instances of application. </summary>
+		/// <param name="processName">the name of process without ".exe". E.g. "myApp". </param>
     	[UserCodeMethod]
-    	public static void CloseInstancesApp(string processName)
+    	public static void closeAppInstances(string processName)
     	{    		
     		if (processName == null)
     		{
@@ -130,14 +118,10 @@ namespace TEARDOWN
 			
     	}
     	
-    	/// <summary>
-    	/// Kill a process tree and all children using taskkill.
-    	/// </summary>
-		/// <param name="processName">the name of process without ".exe".</param>
-		/// for example, value="myApp">
-		/// </summary>
+    	/// <summary> Kill a process tree and all children using taskkill. </summary>
+		/// <param name="processName"> the name of process without ".exe". E.g. "myApp". </param>
     	[UserCodeMethod]
-    	public static void KillProcessTree(string processName)
+    	public static void killProcessTree(string processName)
     	{
     		Process.Start(new ProcessStartInfo
 						{
@@ -146,14 +130,10 @@ namespace TEARDOWN
 						}).WaitForExit();
     	}
     	
-    	/// <summary>
-    	/// Kill a process and all children using ManagementObjectSearcher.
-    	/// </summary>
-		/// <param name="processName">the name of process without ".exe".</param>
-		/// for example, value="myApp">
-		/// </summary>    	
+    	/// <summary> Kill a process and all children using ManagementObjectSearcher. </summary>
+		/// <param name="processName">the name of process without ".exe". E.g. "myApp". </param>
     	[UserCodeMethod]
-    	public static void KillProcessAndChildren(string processName)
+    	public static void killProcessAndChildren(string processName)
     	{
     		Process[] p = Process.GetProcessesByName(processName);
     		foreach(var proc1 in p)

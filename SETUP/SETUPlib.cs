@@ -1,6 +1,6 @@
 ﻿/*
  * Created by Ranorex
- * User: Vasilenok_e
+ * User: seriousQA
  * Date: 19.12.2018
  * Time: 12:17
  * 
@@ -25,46 +25,39 @@ using Ranorex.Core.Testing;
 
 namespace SETUP
 {
-    /// <summary>
-    /// SETUP code collection.
-    /// </summary>
+    /// <summary> SETUP code collection. </summary>
     [UserCodeCollection]
     public class SETUPlib
     {	
-    	/// <summary>
-    	/// Run 32-bit or 64-bit application.
-    	/// <param name="FullExePathX86">full path to *.exe file (32-bit application).</param>
-		/// <param name="ShortBinPathX86">short path to Bin folder (32-bit application).</param>
-		/// <param name="FullExePathX64">full path to *.exe file (64-bit application).</param>
-		/// <param name="ShortBinPathX64">short path to Bin folder (64-bit application).</param>
-    	/// </summary>
+    	/// <summary> Run 32-bit or 64-bit application (AUT). </summary>
+    	/// <param name="fullExePathX86"> full path to *.exe file (32-bit application).</param>
+		/// <param name="shortBinPathX86"> short path to Bin folder (32-bit application).</param>
+		/// <param name="fullExePathX64"> full path to *.exe file (64-bit application).</param>
+		/// <param name="shortBinPathX64"> short path to Bin folder (64-bit application).</param>    	
     	[UserCodeMethod]
-    	public static void FirstOpenApp(string FullExePathX86, string ShortBinPathX86, string FullExePathX64, string ShortBinPathX64)
+    	public static void openApp(string fullExePathX86, string shortBinPathX86, string fullExePathX64, string shortBinPathX64)
     	{
-    		if (File.Exists(FullExePathX86))
+    		if (File.Exists(fullExePathX86))
     		{
-    	    	Host.Local.RunApplication(FullExePathX86, "", ShortBinPathX86, false);
+    	    	Host.Local.RunApplication(fullExePathX86, "", shortBinPathX86, false);
     	    	Delay.Seconds(3);
     		}
     		else
     		{
-    	    	Host.Local.RunApplication(FullExePathX64, "", ShortBinPathX64, false);
+    	    	Host.Local.RunApplication(fullExePathX64, "", shortBinPathX64, false);
     	    	Delay.Seconds(3);
     		}
     	}    	   		
     	
-		/// <summary>
-		/// Delete from the registry the key for application.
-		/// key name = variable
-		/// <param name="regeditFolder">the name of registry folder of your application.</param>
-		/// </summary>
-    	[UserCodeMethod]
-    	public static void REGdelete(string regeditFolder)
+		/// <summary> Delete from the registry the key for application. </summary>
+		/// <param name="regeditFolder"> the name of registry folder of your application. </param>
+		[UserCodeMethod]
+    	public static void deleteRegKey(string regeditFolder)
     	{
 			RegistryKey keyName  = Microsoft.Win86.Registry.CurrentUser.OpenSubKey(@"SOFTWARE", true);
     		if (keyName == null)
     		{
-    			
+    			; // do nothing
     		}
 			else 
 			{
@@ -73,34 +66,34 @@ namespace SETUP
 			}
     	}
     	
-		/// <summary>
-		/// Remove such traces of a test program like \Documents, \Roaming and s.o.
-		/// <param name="regeditFolder">the name of registry folder of your application.</param>
-		/// </summary>
+		/// <summary> Remove such traces of a test program like \Documents, \Roaming and s.o. </summary>
+		/// <param name="regeditFolder"> the name of your application. </param>
+		/// <param name="pathDocuments"> e.g. @"c:\%HOMEPATH%\Documents\". </param>
+		/// <param name="pathRoaming"> e.g. @"c:\%HOMEPATH%\AppData\Roaming\". </param>
     	[UserCodeMethod]
-    	public static void RMDIR(string regeditFolder)
+    	public static void RMDIR(string regeditFolder, string pathDocuments, string pathRoaming)
     	{    		
-    		string pathDocuments = @"c:\%HOMEPATH%\Documents\" + regeditFolder;
-    		if (Directory.Exists(Environment.ExpandEnvironmentVariables(pathDocuments)))
+    		string pathAppDocuments = pathDocuments + regeditFolder;
+    		if (Directory.Exists(Environment.ExpandEnvironmentVariables(pathAppDocuments)))
     		{
-    			DirectoryInfo Documents = new DirectoryInfo(Environment.ExpandEnvironmentVariables(pathDocuments));
+    			DirectoryInfo Documents = new DirectoryInfo(Environment.ExpandEnvironmentVariables(pathAppDocuments));
         		Documents.Delete(true);
     		}
 			
-			string pathRoaming = @"c:\%HOMEPATH%\AppData\Roaming\" + regeditFolder;
-			pathRoaming = Environment.ExpandEnvironmentVariables(pathRoaming);
+			string pathAppRoaming = pathRoaming + regeditFolder;
+			pathAppRoaming = Environment.ExpandEnvironmentVariables(pathAppRoaming);
 			
-			if (Directory.Exists(pathRoaming))
+			if (Directory.Exists(pathAppRoaming))
 			{
 				// search for *.ini	in folder and delete	
-				string[] fileList1 = Directory.GetFiles(pathRoaming, "*.ini");
+				string[] fileList1 = Directory.GetFiles(pathAppRoaming, "*.ini");
 				foreach (string f1 in fileList1)
 				{
 					File.Delete(f1);
 				}
 				
 				// search for *.xml	in folder and delete	
-				string[] fileList2 = Directory.GetFiles(pathRoaming, "*.xml");
+				string[] fileList2 = Directory.GetFiles(pathAppRoaming, "*.xml");
 				foreach (string f2 in fileList2)
 				{
 					File.Delete(f2);
@@ -108,30 +101,22 @@ namespace SETUP
 			}
     	}    
     	
-		/// <summary>
-		/// StartDialog > CreateNewProject (gui)
-		/// </summary>
+		/// <summary> Start dialog > Create new project (GUI) </summary>
     	[UserCodeMethod]
-    	public static void StartDialogCreateNewProject()
+    	public static void createNewProject()
     	{
-    		var repo = SETUPRepository.Instance; 
-		
+    		var repo = SETUPRepository.Instance; 		
     		repo.StartDialog.CreateNewProjectBtn.Click();
             Delay.Seconds(15);
     	}
     	
-		/// <summary>
-		///  Open a specific project.
-		/// <param name="patchProject">path to the project.</param>
-		/// for example, value="C:/Ranorex/.../Projects/"
-		/// <param name="nameProject">the project name.</param>
-		/// for example, value="myProject.docx"
-		/// </summary>
+		/// <summary> Open a specific project. </summary>
+		/// <param name="patchProject"> path to the project. E.g. @"C:\Ranorex\...\Projects\" </param>
+		/// <param name="nameProject"> the project name. E.g. "myProject.docx" </param>
     	[UserCodeMethod]
-    	public static void OpenProjectStartDialog(string patchProject, string nameProject)
+    	public static void openProject(string patchProject, string nameProject)
     	{
-			var repo = SETUPRepository.Instance;  
-		
+			var repo = SETUPRepository.Instance;
     	    repo.StartDialog.OpenProject.Click();
             Delay.Milliseconds(10);
             
@@ -143,6 +128,7 @@ namespace SETUP
             repo.OpenProject.Text1148.Click();
             repo.OpenProject.Text1148.TextValue = nameProject;
 	    	Delay.Milliseconds(10);
+
 	    	// All files (*.*)
 	    	repo.OpenProject.ComboBox1348.Click();
 	    	repo.List.AllFiles.MoveTo();
@@ -151,26 +137,21 @@ namespace SETUP
 	    	Delay.Seconds(3);
     	}
     	
-		/// <summary>
-		/// Resize a window to actually monitor resolution.
-		/// </summary>
+		/// <summary> Resize an AUT window to actual monitor resolution. </summary>
     	[UserCodeMethod]
-    	public static void ResizeWindow()
+    	public static void resizeWindow()
     	{
-			var repo = SETUPRepository.Instance;
-			
+			var repo = SETUPRepository.Instance;			
     		Size resolution = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Size;
     		repo.ProjectWindow.Self.Resize(resolution.Width, resolution.Height);
     	}
     	
-		/// <summary> 
-		/// Remove from \FolderResult all files created during the test run.
-		/// <param name="product">the test product name.</param>
-		/// </summary>
+		/// <summary> Remove from ..\FolderResult all files created during the test run. </summary>
+		/// <param name="projectName"> the test project name. </param>
     	[UserCodeMethod]
-    	public static void DeleteFilesFromDIR(string product)
+    	public static void DeleteFilesFromDIR(string projectName)
     	{
-    		string FolderResult = @"c:\\Ranorex\\" + product + "\\FolderResult\\";
+    		string FolderResult = @"c:\\Ranorex\\" + projectName + "\\FolderResult\\";
     		if (Directory.Exists(Environment.ExpandEnvironmentVariables(FolderResult)))
     		{
     			DirectoryInfo dirInfo = new DirectoryInfo(Environment.ExpandEnvironmentVariables(FolderResult));
@@ -181,46 +162,40 @@ namespace SETUP
     		}
     	}
 		
-		/// <summary>
-		/// Send a dump with a comment.
-		/// </summary>
+		/// <summary> Send a dump with a comment. </summary>
+		/// <param name="appname"> the dump-client name. E.g. "DmpClientName". </param>
     	[UserCodeMethod]
-    	public static void CheckDamp()
+    	public static void checkDump()
     	{
-    		var repo = SETUPRepository.Instance;
-			
-			// the dump-client name
-     		string appname = "DmpClientName"; 
+    		var repo = SETUPRepository.Instance;			
 			
 			// process list
            	Process[] procList = Process.GetProcessesByName(appname); 
 			
 			// watching each process
-            foreach (System.Diagnostics.Process anti in procList) 
+            foreach (System.Diagnostics.Process proc in procList) 
 			{
 				// if the required process has started
-				if(anti.ProcessName.Contains(appname))
+				if(proc.ProcessName.Contains(appname))
 				{
-     				Report.Info("Dump-client has existed");
+     				Report.Info("Dump-client exists.");
      				repo.DmpClient.Comment.Click();
-     				repo.DmpClient.Comment.TextValue = "has found by autotest";
+     				repo.DmpClient.Comment.TextValue = "The failure was detected by an automated test.";
 					repo.DmpClient.Send.Click();
      			}
      			else
      			{
-     				Report.Info("Dump-client hasn't existed");
+     				Report.Info("Dump-client doesn't exist.");
      			}
     		}
     	}
     	
-		/// <summary>
-		/// Create a ResultFolder for each test product.
-		/// <param name="product">the test product name.</param>
-		/// </summary>
+		/// <summary> Create a results folder for each AUT. </summary>
+		/// <param name="projectName"> the test project name.</param>
     	[UserCodeMethod]
-    	public static void CreateFolderResult(string product)
+    	public static void createFolderResult(string projectName)
     	{
-			string FolderResult = "c:\\Ranorex\\" + product + "\\FolderResult\\";
+			string FolderResult = "c:\\Ranorex\\" + projectName + "\\FolderResult\\";
            	FileSystem.CreateDirectory(FolderResult);
             Delay.Milliseconds(10);
     	}  
