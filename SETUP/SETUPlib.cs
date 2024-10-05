@@ -71,7 +71,7 @@ namespace SETUP
 		/// <param name="pathDocuments"> e.g. @"c:\%HOMEPATH%\Documents\". </param>
 		/// <param name="pathRoaming"> e.g. @"c:\%HOMEPATH%\AppData\Roaming\". </param>
     	[UserCodeMethod]
-    	public static void RMDIR(string regeditFolder, string pathDocuments, string pathRoaming)
+    	public static void rmDir(string regeditFolder, string pathDocuments, string pathRoaming)
     	{    		
     		string pathAppDocuments = pathDocuments + regeditFolder;
     		if (Directory.Exists(Environment.ExpandEnvironmentVariables(pathAppDocuments)))
@@ -146,10 +146,10 @@ namespace SETUP
     		repo.ProjectWindow.Self.Resize(resolution.Width, resolution.Height);
     	}
     	
-		/// <summary> Remove from ..\FolderResult all files created during the test run. </summary>
+		/// <summary> Remove from ..\FolderResult all files created during the test execution. </summary>
 		/// <param name="projectName"> the test project name. </param>
     	[UserCodeMethod]
-    	public static void DeleteFilesFromDIR(string projectName)
+    	public static void deleteFilesFromDIR(string projectName)
     	{
     		string FolderResult = @"c:\\Ranorex\\" + projectName + "\\FolderResult\\";
     		if (Directory.Exists(Environment.ExpandEnvironmentVariables(FolderResult)))
