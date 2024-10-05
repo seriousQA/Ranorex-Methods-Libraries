@@ -55,7 +55,7 @@ namespace UserMethods
 
         /// <summary> Get first characters of string. </summary>
 		/// <param name="myString"> string, actual string value. </param>
-        /// <param name="charCount"> int, aamount of characters that we need. </param>
+        /// <param name="charCount"> int, amount of characters that we need. </param>
         /// <returns> Return: string. </returns>
     	[UserCodeMethod]
     	public static string getFirstChars (string myString, int charCount)
@@ -293,12 +293,43 @@ namespace UserMethods
     	}        
         #endregion
 
-        /// <summary> . </summary>
-		/// <param name="myParam"> string. </param>        
+        #region randomGenerators
+
+        /// <summary> Generate random string. </summary>
+		/// <param name="charsCount"> int, amount of characters. </param>
+        /// <returns> Return: string. </returns>
     	[UserCodeMethod]
-    	public static void doSmth (string myParam)
+    	public static string generateRandomString (int charsCount)
     	{
-			
+            var allowedChars = "ABCDEFGHJKLMNOPRSTUVWXYZ";
+            var randomChars = new char[charsCount];
+            var random = new Random();
+            for(var i = 0; i < charsCount; i++){
+                randomChars[i] = allowedChars[random.Next(0, allowedChars.Length)];
+            }
+            var builder = new StringBuilder();
+            builder.Append(randomChars);            
+            string result = builder.ToString();
+            return result;
     	}
+
+        /// <summary> Generate random integer. </summary>
+		/// <param name="digitsCount"> int, amount of digits. </param>
+        /// <returns> Return: int. </returns>
+    	[UserCodeMethod]
+    	public static int generateRandomInt (int digitsCount)
+    	{
+            var allowedDigits = "0123456789";
+            var randomDigits = new char[digitsCount];
+            var random = new Random();
+            for(var i = 0; i < digitsCount; i++){
+                randomDigits[i] = allowedDigits[random.Next(0, allowedDigits.Length)];
+            }
+            var builder = new StringBuilder();
+            builder.Append(randomDigits);            
+            string result = builder.ToString();
+            return result;
+    	}
+        #endregion
     }
 }
