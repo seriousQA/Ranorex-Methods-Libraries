@@ -68,7 +68,7 @@ namespace TEARDOWN
 		/// <summary> Close the AUT (GUI example). </summary>
 		/// <param name="productName"> the AUT product name. </param>
     	[UserCodeMethod]
-    	public static void CloseProjectWindow(string productName)
+    	public static void closeProjectWindow(string productName)
     	{
     		for (int i=0; i<5; i++)
             	{

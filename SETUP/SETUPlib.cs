@@ -146,10 +146,10 @@ namespace SETUP
     		repo.ProjectWindow.Self.Resize(resolution.Width, resolution.Height);
     	}
     	
-		/// <summary> Remove from ..\FolderResult all files created during the test execution. </summary>
+		/// <summary> Remove from results folder all files created during the test execution. </summary>
 		/// <param name="projectName"> the test project name. </param>
     	[UserCodeMethod]
-    	public static void deleteFilesFromDIR(string projectName)
+    	public static void deleteFilesFromDir(string projectName)
     	{
     		string FolderResult = @"c:\\Ranorex\\" + projectName + "\\FolderResult\\";
     		if (Directory.Exists(Environment.ExpandEnvironmentVariables(FolderResult)))
