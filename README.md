@@ -1,5 +1,7 @@
 # Ranorex-Methods-Libraries
 
+![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white)
+
 The libraries contain the most important and useful C# methods for test automation in Ranorex IDE.
 
 ## __Requirements:__
@@ -10,6 +12,9 @@ The libraries contain the most important and useful C# methods for test automati
 0) download the libraries (*.cs files);
 1) add (or link) this *.cs files in your project;
 2) use the methods in yours record or code modules;
+
+## __License:__
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## __SETUPlib__ is a SETUP code collection and includes:
 - openApp() to run 32-bit or 64-bit application (AUT);
@@ -48,24 +53,19 @@ __StartPopupWatcher__ TestModule is using to start a PopupWatcher to handle dial
 - validateAttIsNullOrEmpty() to validate the attribute value of repoItem isn't null or empty;
 - getStringToLower() to get a new string in which all the characters are converted to lowercase;
 - getStringToUpper() to get a new string in which all the characters are converted to uppercase;
-#endregion
 
 #region DateTime
 - getCurrentDate() to get current date with specified format;
 - getDateInNewFormat() to get different date format;
 - addMonths() to add months to date (the same you can do with days or years);
 - getFileCreationTime() to get the time of file creation;
-#endregion 
 
 #region Files
 - getFileName() to get file[0] name if exists;
-#endregion
 
 #region DevExpress
 - getCoordinates() to get a coordinates of text in the PDF file.
-#endregion
 
 #region randomGenerators
 - generateRandomString() to  generate random string;
 - generateRandomInt() to generate random integer;
-#endregion
