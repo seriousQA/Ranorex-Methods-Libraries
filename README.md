@@ -60,6 +60,7 @@ __StartPopupWatcher__ TestModule is using to start a PopupWatcher to handle dial
 #region Files
 - getFileName() to get file[0] name if exists;
 #endregion
+
 #region DevExpress
 - getCoordinates() to get a coordinates of text in the PDF file.
 #endregion
