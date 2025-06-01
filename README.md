@@ -1,8 +1,11 @@
 # Ranorex-Methods-Libraries
 
-![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white)
-
 The libraries contain the most important and useful C# methods for test automation in Ranorex IDE.
+<p align="left">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" alt="sharp" height="50"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dotnetcore/dotnetcore-original.svg" alt="net" height="50"/>
+<img src="https://github.com/user-attachments/assets/a862e7aa-2cb9-4075-8a13-a0f210b37747" alt="ranorex" height="50"/>
+</p>
 
 ## __Requirements:__
 * Windows
