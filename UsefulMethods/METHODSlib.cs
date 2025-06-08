@@ -34,7 +34,7 @@ namespace UserMethods
     [UserCodeCollection]
     public class METHODSlib
     {
-    	#region global_variable
+        #region global_variable
         // There should be the reference to your Ranorex repository
         public static yourProjectRepository repo_global = yourProjectRepository.Instance;
         #endregion
@@ -47,92 +47,92 @@ namespace UserMethods
         /// <param name="charCount"> int, amount of characters that have to be removed. </param>
         /// <returns> Return: string. </returns>
     	[UserCodeMethod]
-    	public static string removeCharsInString (string myString, int charCount)
-    	{
-			string subString = myString.Substring(0, myString.Length - charCount);
+        public static string removeCharsInString(string myString, int charCount)
+        {
+            string subString = myString.Substring(0, myString.Length - charCount);
             return subString;
-    	}
+        }
 
         /// <summary> Get first characters of string. </summary>
 		/// <param name="myString"> string, actual string value. </param>
         /// <param name="charCount"> int, amount of characters that we need. </param>
         /// <returns> Return: string. </returns>
     	[UserCodeMethod]
-    	public static string getFirstChars (string myString, int charCount)
-    	{
-			string firstChars = myString.Substring(digitsNum);
+        public static string getFirstChars(string myString, int charCount)
+        {
+            string firstChars = myString.Substring(digitsNum);
             return firstChars;
-    	}
+        }
 
         /// <summary> Get last characters of string. </summary>
 		/// <param name="myString"> string, actual string value. </param>
         /// <param name="charCount"> int, amount of characters that we need. </param>
         /// <returns> Return: string. </returns>
     	[UserCodeMethod]
-    	public static string getLastChars (string myString, int charCount)
-    	{
-			string lastChars = myString.Substring(0, myString.Length - digitsNum);
+        public static string getLastChars(string myString, int charCount)
+        {
+            string lastChars = myString.Substring(0, myString.Length - digitsNum);
             return lastChars;
-    	}
+        }
 
         /// <summary> Concatenate two strings. </summary>
 		/// <param name="myString1"> string, value #1. </param>
         /// <param name="myString2"> string, value #2. </param>
         /// <returns> Return: string. </returns>
     	[UserCodeMethod]
-    	public static string concatenateStrings (string myString1, string myString2)
-    	{
-			string conString = myString1 + myString2;
+        public static string concatenateStrings(string myString1, string myString2)
+        {
+            string conString = myString1 + myString2;
             return conString;
-    	}
+        }
 
         /// <summary> Compare strings. </summary>
 		/// <param name="actual"> actual string. </param>
         /// <param name="expected"> expected string. </param>      
     	[UserCodeMethod]
-    	public static void compareStrings (string actual, string expected)
-    	{
-			if(actual.Equals(expected))
+        public static void compareStrings(string actual, string expected)
+        {
+            if (actual.Equals(expected))
             {
                 Report.Success("Actual value (" + actual + ") is correct.")
-            }else{
+            } else {
                 Report.Failure("Actual value (" + actual + ") is NOT correct. Expected value is " + expected);
             }
-    	}
+        }
 
         /// <summary> Validate the attribute value of repoItem isn't null or empty. </summary>
 		/// <param name="myRepoItem"> Ranorex repository element. </param>   
         /// <param name="attributeName"> string. </param>
     	[UserCodeMethod]
-    	public static void validateAttIsNullOrEmpty (Ranorex.Adapter myRepoItem, string attributeName)
-    	{
-			if(String.IsNullOrEmpty(myRepoItem.GetAttributeValue<string>(attributeName)))
+        public static void validateAttIsNullOrEmpty(Ranorex.Adapter myRepoItem, string attributeName)
+        {
+            if (String.IsNullOrEmpty(myRepoItem.GetAttributeValue<string>(attributeName)))
             {
                 Report.Log(ReportLevel.Error, attributeName + " value of " + myRepoItem.ToString() + " is null or empty.");
-            }else{
+            } else {
                 Report.Log(ReportLevel.Success, attributeName + " value of " + myRepoItem.ToString() + " isn't null or empty.");
             }
-    	}
+        }
 
         /// <summary> Get a new string in which all the characters are converted to lowercase. </summary>
         /// <param name="myString"> string, my value. </param>
         /// <returns> Return: string. </returns>
     	[UserCodeMethod]
-    	public static string getStringToLower (string myString)
-    	{
-			string myStringToLower = myString.ToLower();
+        public static string getStringToLower(string myString)
+        {
+            string myStringToLower = myString.ToLower();
             return myStringToLower;
-    	}
+        }
 
         /// <summary> Get a new string in which all the characters are converted to uppercase. </summary>
         /// <param name="myString"> string, my value. </param>
         /// <returns> Return: string. </returns>
     	[UserCodeMethod]
-    	public static string getStringToUpper (string myString)
-    	{
-			string myStringToUpper = myString.ToUpper();
+        public static string getStringToUpper(string myString)
+        {
+            string myStringToUpper = myString.ToUpper();
             return myStringToUpper;
-    	}
+        }
         #endregion
 
         #region DateTime
@@ -142,33 +142,33 @@ namespace UserMethods
 		/// <param name="dateFormat"> string, the date format. E.g. "MM/dd/yyyy". </param>
         /// <returns> Return: string. </returns>
     	[UserCodeMethod]
-    	public static string getCurrentDate (string dateFormat)
-    	{
-			string currDate = "";
-            try{
+        public static string getCurrentDate(string dateFormat)
+        {
+            string currDate = "";
+            try {
                 System.DateTime date = System.DateTime.Now;
                 currDate = date.ToString(dateFormat);
-            }catch(Exception inputExp){
-                Report.Failure("Stacktrace: " + inputExp.Stacktrace);                
+            } catch (Exception inputExp) {
+                Report.Failure("Stacktrace: " + inputExp.Stacktrace);
             }
             return currDate;
-    	}
+        }
 
         /// <summary> Get different date format. </summary>
 		/// <param name="myDate"> string, the date in format "dd.MM.yyyy". </param>
         /// <param name="dateFormat"> string, the date format. E.g. "MM'/'yyyy". </param>
         /// <returns> Return: string. </returns>
     	[UserCodeMethod]
-    	public static string getDateInNewFormat (string myDate, string dateFormat)
-    	{
+        public static string getDateInNewFormat(string myDate, string dateFormat)
+        {
             string dateInNewFormat = "";
-            try{
+            try {
                 dateInNewFormat = System.DateTime.ParseExact(myDate, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString(dateFormat);
-            }catch(Exception inputExp){
-                Report.Failure("Stacktrace: " + inputExp.Stacktrace);                
+            } catch (Exception inputExp) {
+                Report.Failure("Stacktrace: " + inputExp.Stacktrace);
             }
             return dateInNewFormat;
-    	}
+        }
 
         /// <summary> Add months to date. </summary>
         /// <param name="myYear"> int, year in format "YYYY". </param>
@@ -178,17 +178,17 @@ namespace UserMethods
         /// <param name="dateFormat"> string, the date format. E.g. "MM'/'yyyy". </param>
         /// <returns> Return: string. </returns>
     	[UserCodeMethod]
-    	public static string addMonths (int myYear, int myMonth, int myDay, int monthsNum, string dateFormat)
-    	{
+        public static string addMonths(int myYear, int myMonth, int myDay, int monthsNum, string dateFormat)
+        {
             string newDate = "";
-            try{
+            try {
                 var myDate = new DateTime(myYear, myMonth, myDay);
                 newDate = myDate.AddMonths(monthsNum).ToString(dateFormat);
-            }catch(Exception inputExp){
-                Report.Failure("Stacktrace: " + inputExp.Stacktrace);                
+            } catch (Exception inputExp) {
+                Report.Failure("Stacktrace: " + inputExp.Stacktrace);
             }
             return newDate;
-    	}
+        }
 
         /// <summary> Get the time of file creation. </summary>
         /// <param name="filePath"> string, file path. E.g. @"C:\ranorex_testdata\". </param>
@@ -197,20 +197,20 @@ namespace UserMethods
         /// <param name="dateFormat"> string, date format. E.g. "dd.MM.yyyy HH:mm:ss". </param>
         /// <returns> Return: string. </returns>
     	[UserCodeMethod]
-    	public static string getFileCreationTime (string filePath, string fileName, string fileFormat, string dateFormat)
-    	{
-			string currFile = filePath + fileName + "." + fileFormat;
+        public static string getFileCreationTime(string filePath, string fileName, string fileFormat, string dateFormat)
+        {
+            string currFile = filePath + fileName + "." + fileFormat;
             string currDate = "";
-            try{
+            try {
                 System.DateTime actualCreationDate = File.GetCreationTime(currFile);
                 System.DateTime formattedCreationDate = Convert.ToDateTime(actualCreationDate);
                 currDate = formattedCreationDate.ToString(dateFormat);
                 Report.Log(ReportLevel.Info, fileName + " is created at: " + currDate);
-            }catch(Exception inputExp){
-                Report.Failure("Stacktrace: " + inputExp.Stacktrace);                
+            } catch (Exception inputExp) {
+                Report.Failure("Stacktrace: " + inputExp.Stacktrace);
             }
             return currDate;
-    	}
+        }
         #endregion        
 
         #region Files
@@ -220,23 +220,23 @@ namespace UserMethods
 		/// <param name="dirPath"> string, directory path. E.g. @"C:\ranorex_testdata\". </param>  
         /// <returns> Return: string. </returns>
     	[UserCodeMethod]
-    	public static string getFileName (string dirPath)
-    	{
-			try{
+        public static string getFileName(string dirPath)
+        {
+            try {
                 string[] files = Directory.GetFiles(dirPath);
-                if(!files.Length.ToString().Equals("0"))
+                if (!files.Length.ToString().Equals("0"))
                 {
                     string fileName = Path.GetFileName(files[0]).ToString();
                     Report.Log(ReportLevel.Success, "File name  is: " + fileName);
                     return fileName;
-                }else{
+                } else {
                     Report.Log(ReportLevel.Success, "Unable to find files in folder.");
                     return null;
                 }
-            }catch(Exception inputExp){
-                Report.Failure("Stacktrace: " + inputExp.Stacktrace);                
+            } catch (Exception inputExp) {
+                Report.Failure("Stacktrace: " + inputExp.Stacktrace);
             }
-    	}
+        }
         #endregion
 
         #region DevExpress
@@ -247,9 +247,9 @@ namespace UserMethods
         /// <param name="fileName"> string, the name of file. E.g. "myPDFName". </param>
         /// <param name="text"> string, the text that we have to find. </param>
     	[UserCodeMethod]
-    	public static void getCoordinates (string filePath, string fileName, string text)
-    	{
-			string pdfFile = filePath + fileName + ".pdf";
+        public static void getCoordinates(string filePath, string fileName, string text)
+        {
+            string pdfFile = filePath + fileName + ".pdf";
 
             // specify search parameters
             PdfTextSearchParameters searchParameters = new PdfTextSearchParameters();
@@ -258,11 +258,11 @@ namespace UserMethods
 
             // declare a list to store the words and their coordinates
             List<Tuple<string, int, int>> wordCoordinatesList = new List<Tuple<string, int, int>>();
-            using(PdfDocumentProcessor processor = new PdfDocumentProcessor())
+            using (PdfDocumentProcessor processor = new PdfDocumentProcessor())
             {
                 processor.LoadDocument(pdfFile);
                 PdfTextSearchResults currWord = processor.FindText(text, searchParameters);
-                for(int i = 0, i < 1; i++)
+                for (int i = 0, i < 1; i++)
                 {
                     // retrieve the number of the pages where the word is located
                     int pageNumber = currWord.PageNumber;
@@ -290,45 +290,67 @@ namespace UserMethods
                 }
                 processor.CloseDocument();
             }
-    	}        
+        }
         #endregion
 
         #region randomGenerators
 
         /// <summary> Generate random string. </summary>
-		/// <param name="charsCount"> int, amount of characters. </param>
+        /// <param name="charsCount"> int, amount of characters. </param>
         /// <returns> Return: string. </returns>
-    	[UserCodeMethod]
-    	public static string generateRandomString (int charsCount)
-    	{
+        [UserCodeMethod]
+        public static string generateRandomString(int charsCount)
+        {
             var allowedChars = "ABCDEFGHJKLMNOPRSTUVWXYZ";
             var randomChars = new char[charsCount];
             var random = new Random();
-            for(var i = 0; i < charsCount; i++){
+            for (var i = 0; i < charsCount; i++) {
                 randomChars[i] = allowedChars[random.Next(0, allowedChars.Length)];
             }
             var builder = new StringBuilder();
-            builder.Append(randomChars);            
+            builder.Append(randomChars);
             string result = builder.ToString();
             return result;
-    	}
+        }
 
         /// <summary> Generate random integer. </summary>
 		/// <param name="digitsCount"> int, amount of digits. </param>
         /// <returns> Return: int. </returns>
     	[UserCodeMethod]
-    	public static int generateRandomInt (int digitsCount)
-    	{
+        public static int generateRandomInt(int digitsCount)
+        {
             var allowedDigits = "0123456789";
             var randomDigits = new char[digitsCount];
             var random = new Random();
-            for(var i = 0; i < digitsCount; i++){
+            for (var i = 0; i < digitsCount; i++) {
                 randomDigits[i] = allowedDigits[random.Next(0, allowedDigits.Length)];
             }
             var builder = new StringBuilder();
-            builder.Append(randomDigits);            
+            builder.Append(randomDigits);
             string result = builder.ToString();
             return result;
+        }
+        #endregion
+
+        #region Microsoft.Office.Interop.Excel
+
+        /// <summary> Save elapsed time of method execution into Excel file. </summary>
+        [UserCodeMethod]
+        public static string generateRandomString()
+        {
+            var watcher = System.Diagnostics.Stopwatch.StartNew();
+            Excel.Application myExcel = new Excel.Application();
+            Excel.Workbook myWorkbook = myExcel.Workbooks.Open("C:\\your\\path\\to\\file.xlsx");
+            Excel.Worksheet myWorksheet = (Excel.Worksheet)myWorkbook.Worksheets[1];
+            Excel.Range myRange = (Excel.Range).myWorksheet.Columns[1];
+            Excel.Range lastCell = (Excel.Range).myWorksheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing);
+            watcher.Stop();
+            var elapsedMs = watcher.ElapsedMilliseconds;
+            ((Excel.Range)myWorksheet.Cells[lastCell.Row + 1, 1]).Value = "test";
+            ((Excel.Range)myWorksheet.Cells[lastCell.Row + 1, 2]).Value = elapsedMs;
+
+            myWorkbook.Close(true);
+            myExcel.Quit();
     	}
         #endregion
     }
