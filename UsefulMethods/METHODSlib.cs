@@ -336,7 +336,7 @@ namespace UserMethods
 
         /// <summary> Save elapsed time of method execution into Excel file. </summary>
         [UserCodeMethod]
-        public static string generateRandomString()
+        public static string saveDataIntoExcelFile()
         {
             var watcher = System.Diagnostics.Stopwatch.StartNew();
             Excel.Application myExcel = new Excel.Application();

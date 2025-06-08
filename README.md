@@ -72,3 +72,6 @@ __StartPopupWatcher__ TestModule is using to start a PopupWatcher to handle dial
 #region randomGenerators
 - generateRandomString() to  generate random string;
 - generateRandomInt() to generate random integer;
+
+#region Microsoft.Office.Interop.Excel
+- saveDataIntoExcelFile() to save data into Excel file;
